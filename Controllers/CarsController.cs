@@ -28,17 +28,16 @@ namespace dhbw_vs_aspdotnetcoretutorial.Controllers
         }
 
         // GET: api/Cars
-        [HttpGet("/AveragePurchasePrice")]
+        [HttpGet("AveragePurchasePrice")]
         public async Task<ActionResult<IEnumerable<Car>>> GetAveragePurchasePrice()
         {
             double totalPrice = 0;
-            double averagePrice = 0.0;
             List<Car> cars = await _context.Car.ToListAsync();
             foreach (Car car in cars)
             {
                 totalPrice = totalPrice + car.PurchasePrice;
             }
-            averagePrice = totalPrice / cars.Count;
+            double averagePrice = totalPrice / cars.Count;
 
             return Ok(averagePrice);
         }
