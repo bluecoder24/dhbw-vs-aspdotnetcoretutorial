@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using dhbw_vs_aspdotnetcoretutorial.Models;
 
 namespace dhbw_vs_aspdotnetcoretutorial
 {
@@ -25,6 +27,8 @@ namespace dhbw_vs_aspdotnetcoretutorial
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CarContext>(opt =>
+               opt.UseInMemoryDatabase("Cars"));
             services.AddControllers();
         }
 
