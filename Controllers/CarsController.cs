@@ -27,6 +27,22 @@ namespace dhbw_vs_aspdotnetcoretutorial.Controllers
             return await _context.Car.ToListAsync();
         }
 
+        // GET: api/Cars
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Car>>> GetAveragePurchasePrice()
+        {
+            double totalPrice = 0;
+            double averagePrice = 0.0;
+            List<Car> cars = await _context.Car.ToListAsync();
+            foreach (Car car in cars)
+            {
+                totalPrice = totalPrice + car.PurchasePrice;
+            }
+            averagePrice = totalPrice / cars.Count;
+
+            return Ok(averagePrice);
+        }
+
         // GET: api/Cars/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Car>> GetCar(int id)
