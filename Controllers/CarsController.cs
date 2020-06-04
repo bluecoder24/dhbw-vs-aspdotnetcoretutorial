@@ -28,7 +28,7 @@ namespace dhbw_vs_aspdotnetcoretutorial.Controllers
         }
 
         // GET: api/Cars
-        [HttpGet]
+        [HttpGet("/AveragePurchasePrice")]
         public async Task<ActionResult<IEnumerable<Car>>> GetAveragePurchasePrice()
         {
             double totalPrice = 0;
